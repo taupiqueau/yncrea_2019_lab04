@@ -18,7 +18,7 @@ For this module, you have to declare, in the `pom.xml` file, the following depen
 
 |groupId   |artifactId      |  version | scope|
 |----------|-------------|------|---|
-| ${project.groupId | pw04-core | ${project.version}||
+| ${project.groupId} | pw04-core | ${project.version}||
 | org.springframework | spring-webmvc | 4.2.9.RELEASE | 
 | org.springframework | spring-context-support | 4.2.9.RELEASE || 
 | org.apache.velocity| velocity | 1.7 | |
