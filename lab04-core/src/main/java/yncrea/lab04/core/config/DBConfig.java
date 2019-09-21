@@ -1,10 +1,7 @@
-package yncrea.pw04.config;
+package yncrea.lab04.core.config;
 
-import java.sql.SQLException;
-import java.util.Properties;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -12,27 +9,21 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
-import com.jolbox.bonecp.BoneCPDataSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+import java.sql.SQLException;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "yncrea.pw04.dao")
+@EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "yncrea.lab04.core.dao")
 public class DBConfig {
 
     @Bean(destroyMethod = "close")
-    public DataSource dataSource(Properties dbProperties) {
-        BoneCPDataSource dataSource = new BoneCPDataSource();
-        dataSource.setDriverClass(dbProperties.getProperty("driverClass"));
-        dataSource.setJdbcUrl(dbProperties.getProperty("jdbcUrl"));
-        dataSource.setUsername(dbProperties.getProperty("username"));
-        dataSource.setPassword(dbProperties.getProperty("password"));
-        dataSource.setIdleConnectionTestPeriodInMinutes(60);
-        dataSource.setIdleMaxAgeInMinutes(240);
-        dataSource.setMaxConnectionsPerPartition(10);
-        dataSource.setMinConnectionsPerPartition(1);
-        dataSource.setPartitionCount(2);
-        dataSource.setAcquireIncrement(5);
-        dataSource.setStatementsCacheSize(500);
-        return dataSource;
+    public DataSource dataSource(HikariConfig dbConfiguration) {
+        return new HikariDataSource(dbConfiguration);
     }
 
 
@@ -58,7 +49,7 @@ public class DBConfig {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.getJpaPropertyMap().put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-        factory.setPackagesToScan("yncrea.pw04.entity");
+        factory.setPackagesToScan("yncrea.lab04.core.entity");
         factory.setDataSource(dataSource);
         factory.afterPropertiesSet();
         return factory.getObject();
