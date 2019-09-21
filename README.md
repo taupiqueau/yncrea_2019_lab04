@@ -40,7 +40,7 @@ In the `yncrea.lab04.web` package, create a class named `Initializer` which exte
 If you wonder how to create arrays in Java, check this out : http://mathbits.com/MathBits/Java/arrays/Initialize.htm
 
 ### WebConfig
-In the `yncrea.lab04.web.config` package, create the `WebConfig` class which extends `WebMvcConfigurerAdapter`.
+In the `yncrea.lab04.web.config` package, create the `WebConfig` class which extends `WebMvcConfigurer`.
 - Annotate this class with `@EnableWebMVC` in order to start Spring WebMVC.
 - Annotate this class with `@Configuration`
 - Annotate this class with `@ComponentScan` and configure this annotation to tell Spring to check the `yncrea.lab04.web.controller` package.
