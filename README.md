@@ -21,7 +21,7 @@ For this module, you have to declare, in the `pom.xml` file, the following depen
 | ${project.groupId} | lab04-core | ${project.version}|
 | org.springframework | spring-webmvc | 5.1.9.RELEASE | 
 | org.springframework | spring-context-support | 5.1.9.RELEASE |
-| org.apache.velocity | velocity | 2.1 | 
+| org.apache.velocity | velocity | 1.7 | 
 | com.shield-solutions | spring-velocity-adapter | 1.0.0.RELEASE |
 | org.webjars | bootstrap | 3.3.7-1 | 
 | ch.qos.logback | logback-classic | 1.2.3 | 
