@@ -31,6 +31,7 @@ public class CompanyController {
         return "companyForm";
     }
 
+    @RequestMapping(path = "/form")
     public String submitForm(@ModelAttribute("company")Company company)
     {
         return null;
