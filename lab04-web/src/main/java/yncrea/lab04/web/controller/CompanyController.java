@@ -23,7 +23,7 @@ public class CompanyController {
     }
 
 
-    @RequestMapping(path = "/form")
+    /*@RequestMapping(path = "/form")
     public String getForm(ModelMap modelMap)
     {
         Company company=new Company();
@@ -35,7 +35,7 @@ public class CompanyController {
     public String submitForm(@ModelAttribute("company")Company company)
     {
         return null;
-    }
+    }*/
 
 
 }
