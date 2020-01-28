@@ -1,24 +1,27 @@
 package yncrea.lab04.web;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import yncrea.lab04.core.config.AppConfig;
+import yncrea.lab04.core.config.DBConfig;
+import yncrea.lab04.web.config.WebConfig;
 
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        //TODO Implementer la fonction avec les instructions correctes demandées
-        return new Class[0];
+        Class<?>[] arrayRootConfigClass={AppConfig.class, DBConfig.class};
+        return arrayRootConfigClass;
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        //TODO Implementer la fonction avec les instructions correctes demandées
-        return new Class[0];
+        Class<?>[] arrayServletConfigclasses={WebConfig.class};
+        return arrayServletConfigclasses;
     }
 
     @Override
     protected String[] getServletMappings() {
-        //TODO Implementer la fonction avec les instructions correctes demandées
-        return new String[0];
+        String[] arrayServletMapping={"/"};
+        return arrayServletMapping;
     }
 }

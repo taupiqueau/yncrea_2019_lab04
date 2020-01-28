@@ -3,15 +3,22 @@ package yncrea.lab04.web.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import yncrea.lab04.core.dao.CompanyDAO;
+import yncrea.lab04.core.entity.Company;
+
+import java.util.List;
 
 @Controller
 public class CompanyController {
 
+    private CompanyDAO companyDAO;
+
     @RequestMapping(path="/list")
     private String getListOfCompanies(ModelMap modelMap)
     {
-        //TODO Suivre les directives d'implémentation sur le Github ;
-        return null;
+        final List<Company> companies=companyDAO.findAllWithProjects();
+        modelMap.put("companies",companies);
+        return "companiesList";
     }
 
 }

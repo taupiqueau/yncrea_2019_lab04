@@ -21,10 +21,19 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    VelocityConfigurer velocityConfigurer;
-    //TODO Voir pour l'utilisation de le méthode "ResourceLoaderPath" du bean précédent ;
+    public VelocityConfigurer velocityConfigurer()
+    {
+        VelocityConfigurer myVelocityConfigurer=new VelocityConfigurer();
+        myVelocityConfigurer.setResourceLoaderPath("/WEB-INF/velocity");
+        return myVelocityConfigurer;
+    }
 
     @Bean
-    VelocityViewResolver velocityViewResolver;
+    public VelocityViewResolver velocityViewResolver()
+    {
+        VelocityViewResolver myVelocityViewResolver=new VelocityViewResolver();
+        myVelocityViewResolver.setSuffix(".vm");
+        return myVelocityViewResolver;
+    }
     //TODO Voir des explications à propos du suffix en question : ".vm" et de la méthode disponible
 }
