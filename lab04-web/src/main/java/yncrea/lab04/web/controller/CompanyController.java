@@ -3,6 +3,7 @@ package yncrea.lab04.web.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import yncrea.lab04.core.dao.CompanyDAO;
@@ -42,6 +43,14 @@ public class CompanyController {
     {
         companyService.save(company);
         return "redirect:list";
+    }
+
+    @RequestMapping("/{id}/delete")
+    public String deleteCompany(@PathVariable(value="id") String id)
+    {
+        long idCompany=Long.valueOf(id);
+        companyService.deleteById(idCompany);
+        return "redirect:/list";
     }
 
 
