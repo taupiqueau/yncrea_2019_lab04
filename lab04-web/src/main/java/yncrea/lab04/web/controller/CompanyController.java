@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import yncrea.lab04.core.dao.CompanyDAO;
 import yncrea.lab04.core.entity.Company;
 import yncrea.lab04.core.service.CompanyService;
@@ -28,19 +29,20 @@ public class CompanyController {
     }
 
 
-    /*@RequestMapping(path = "/form")
+    @RequestMapping(path = "/form")
     public String getForm(ModelMap modelMap)
     {
         Company company=new Company();
-        modelMap.addAttribute("company",company);
+        modelMap.put("company",company);
         return "companyForm";
     }
 
-    @RequestMapping(path = "/form")
+    @RequestMapping(path = "/form",method = RequestMethod.POST)
     public String submitForm(@ModelAttribute("company")Company company)
     {
-        return null;
-    }*/
+        companyService.save(company);
+        return "redirect:list";
+    }
 
 
 }
