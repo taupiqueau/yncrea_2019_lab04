@@ -1,4 +1,4 @@
-# Lab 04
+# Lab 04 JAROSSET Corentin & MALLET Maxance
 
 ## Intro
 Several goals for this homework:
