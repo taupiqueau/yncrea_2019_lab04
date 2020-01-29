@@ -6,18 +6,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import yncrea.lab04.core.dao.CompanyDAO;
 import yncrea.lab04.core.entity.Company;
+import yncrea.lab04.core.service.CompanyService;
 
 import java.util.List;
 
 @Controller
 public class CompanyController {
 
-    private CompanyDAO companyDAO;
+    private CompanyService companyService;
+
+    public CompanyController(CompanyService companyService) {
+        this.companyService = companyService;
+    }
 
     @RequestMapping(path="/list")
     public String getListOfCompanies(ModelMap modelMap)
     {
-        final List<Company> companies=companyDAO.findAllWithProjects();
+        final List<Company> companies=companyService.findAllWithProjects();
         modelMap.put("companies",companies);
         return "companiesList";
     }

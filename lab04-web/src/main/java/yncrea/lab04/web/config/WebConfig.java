@@ -35,5 +35,4 @@ public class WebConfig implements WebMvcConfigurer {
         myVelocityViewResolver.setSuffix(".vm");
         return myVelocityViewResolver;
     }
-    //TODO Voir des explications à propos du suffix en question : ".vm" et de la méthode disponible
 }
